@@ -10,10 +10,10 @@ interface ProductCardProps {
 
 /** Formata valor em reais (BRL) */
 function formatarPreco(valor: number): string {
-  return valor.toLocaleString('pt-BR', {
+  return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  })
+  }).format(valor)
 }
 
 export default function ProductCard({ produto }: ProductCardProps) {
@@ -82,7 +82,7 @@ export default function ProductCard({ produto }: ProductCardProps) {
 
       {/* Informações do produto */}
       <div className="flex flex-1 flex-col justify-between p-3 sm:p-4">
-        <h3 className="line-clamp-2 text-sm font-medium text-gray-800 group-hover:text-blue-600 sm:text-base">
+        <h3 className="line-clamp-2 text-sm font-medium text-gray-800 group-hover:text-[#068c22] sm:text-base">
           {produto.nome}
         </h3>
 

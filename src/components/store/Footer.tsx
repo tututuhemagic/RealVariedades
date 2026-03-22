@@ -23,11 +23,11 @@ export default function Footer() {
           {/* Logo e descricao */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#068c22] text-white font-bold text-sm">
                 RV
               </div>
               <span className="text-lg font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
-                Real<span className="text-blue-400">Variedades</span>
+                Real<span className="text-[#2ab84a]">Variedades</span>
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400 max-w-xs">
@@ -38,7 +38,7 @@ export default function Footer() {
             <div className="mt-6 flex gap-3">
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-blue-600 hover:text-white hover:scale-105 active:scale-95"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-[#068c22] hover:text-white hover:scale-105 active:scale-95"
                 aria-label="Instagram"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-blue-600 hover:text-white hover:scale-105 active:scale-95"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-[#068c22] hover:text-white hover:scale-105 active:scale-95"
                 aria-label="Facebook"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">

@@ -84,7 +84,7 @@ export default function AdminLayout({
                   transition-colors duration-150
                   ${
                     active
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-[#068c22] text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                   }
                 `}

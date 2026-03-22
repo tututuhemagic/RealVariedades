@@ -18,7 +18,7 @@ const statusColors: Record<string, string> = {
   pendente: 'bg-yellow-100 text-yellow-800',
   pago: 'bg-green-100 text-green-800',
   separando: 'bg-purple-100 text-purple-800',
-  enviado: 'bg-blue-100 text-blue-800',
+  enviado: 'bg-[#d4f5dc] text-[#057a1e]',
   entregue: 'bg-emerald-100 text-emerald-800',
   cancelado: 'bg-red-100 text-red-800',
 }
@@ -55,7 +55,7 @@ export default function PedidosPage() {
               px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-medium transition-colors
               ${
                 activeTab === tab.key
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#068c22] text-white'
                   : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'
               }
             `}

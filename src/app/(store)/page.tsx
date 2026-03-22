@@ -9,15 +9,45 @@ import {
   Star,
   Package,
 } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import type { Categoria, Produto } from "@/types";
+import ProductCard from "@/components/store/ProductCard";
 
-/** Categorias placeholder */
-const categorias = [
-  { nome: "Eletronicos", slug: "eletronicos", icone: "📱", cor: "from-blue-500 to-cyan-400" },
+/** Categorias placeholder (fallback quando nao ha categorias no DB) */
+const categoriasPlaceholder = [
+  { nome: "Eletronicos", slug: "eletronicos", icone: "📱", cor: "from-[#068c22] to-[#2ab84a]" },
   { nome: "Casa & Deco", slug: "casa-decoracao", icone: "🏠", cor: "from-amber-500 to-orange-400" },
   { nome: "Moda", slug: "moda", icone: "👗", cor: "from-pink-500 to-rose-400" },
   { nome: "Beleza", slug: "beleza", icone: "💄", cor: "from-purple-500 to-fuchsia-400" },
   { nome: "Esportes", slug: "esportes", icone: "⚽", cor: "from-emerald-500 to-green-400" },
   { nome: "Brinquedos", slug: "brinquedos", icone: "🧸", cor: "from-yellow-500 to-amber-400" },
+];
+
+/** Icones para categorias do DB */
+const iconesCategorias: Record<string, string> = {
+  eletronicos: "📱",
+  "casa-decoracao": "🏠",
+  moda: "👗",
+  beleza: "💄",
+  esportes: "⚽",
+  brinquedos: "🧸",
+  acessorios: "⌚",
+  livros: "📚",
+  informatica: "💻",
+  jogos: "🎮",
+  saude: "💊",
+  alimentos: "🍎",
+};
+
+const coresGradiente = [
+  "from-[#068c22] to-[#2ab84a]",
+  "from-amber-500 to-orange-400",
+  "from-pink-500 to-rose-400",
+  "from-purple-500 to-fuchsia-400",
+  "from-emerald-500 to-green-400",
+  "from-yellow-500 to-amber-400",
+  "from-cyan-500 to-blue-400",
+  "from-red-500 to-rose-400",
 ];
 
 /** Beneficios da loja */
@@ -26,7 +56,7 @@ const beneficios = [
     icone: Truck,
     titulo: "Entrega Rapida",
     desc: "Enviamos para todo o Brasil com rastreio completo",
-    cor: "bg-blue-50 text-blue-600",
+    cor: "bg-[#edfcf0] text-[#068c22]",
   },
   {
     icone: QrCode,
@@ -48,20 +78,53 @@ const beneficios = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+
+  // Fetch categorias ativas
+  const { data: categorias } = await supabase
+    .from('categorias')
+    .select('*')
+    .eq('ativo', true)
+    .order('ordem');
+
+  // Fetch produtos em destaque
+  const { data: produtosDestaque } = await supabase
+    .from('produtos')
+    .select('*')
+    .eq('ativo', true)
+    .eq('destaque', true)
+    .order('created_at', { ascending: false })
+    .limit(8);
+
+  // Se nao houver produtos destaque, buscar os mais recentes
+  let produtos: Produto[] = produtosDestaque ?? [];
+  if (produtos.length === 0) {
+    const { data: produtosRecentes } = await supabase
+      .from('produtos')
+      .select('*')
+      .eq('ativo', true)
+      .order('created_at', { ascending: false })
+      .limit(4);
+    produtos = produtosRecentes ?? [];
+  }
+
+  const categoriasReais = (categorias ?? []) as Categoria[];
+  const temCategorias = categoriasReais.length > 0;
+
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 noise-bg">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-[#042e0b] to-slate-900 noise-bg">
         {/* Esferas decorativas */}
-        <div className="absolute top-[-120px] right-[-80px] h-[400px] w-[400px] rounded-full bg-blue-600/20 blur-3xl" />
-        <div className="absolute bottom-[-60px] left-[-60px] h-[300px] w-[300px] rounded-full bg-indigo-600/15 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute top-[-120px] right-[-80px] h-[400px] w-[400px] rounded-full bg-[#068c22]/20 blur-3xl" />
+        <div className="absolute bottom-[-60px] left-[-60px] h-[300px] w-[300px] rounded-full bg-[#068c22]/15 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#068c22]/10 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 sm:pt-24 sm:pb-28 lg:px-8 lg:pt-32 lg:pb-36">
           <div className="text-center">
             {/* Badge */}
-            <div className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-300 backdrop-blur-sm">
+            <div className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-[#068c22]/20 bg-[#068c22]/10 px-4 py-1.5 text-sm font-medium text-green-300 backdrop-blur-sm">
               <Sparkles size={14} className="animate-pulse" />
               Novidades toda semana
             </div>
@@ -93,7 +156,7 @@ export default function HomePage() {
             >
               <Link
                 href="/produtos"
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-600/30 active:scale-[0.98] min-h-[44px]"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-[#068c22] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-[#068c22]/25 transition-all hover:bg-[#07a328] hover:shadow-xl hover:shadow-[#068c22]/30 active:scale-[0.98] min-h-[44px]"
               >
                 Ver Produtos
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -117,7 +180,7 @@ export default function HomePage() {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="h-8 w-8 rounded-full border-2 border-slate-900 bg-gradient-to-br from-blue-400 to-indigo-500"
+                      className="h-8 w-8 rounded-full border-2 border-slate-900 bg-gradient-to-br from-[#2ab84a] to-[#068c22]"
                     />
                   ))}
                 </div>
@@ -156,7 +219,7 @@ export default function HomePage() {
       <section className="relative z-10 -mt-1 bg-[#fafafa]">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {beneficios.map((b, i) => (
+            {beneficios.map((b) => (
               <div
                 key={b.titulo}
                 className="group flex flex-col items-center gap-3 rounded-2xl bg-white p-4 sm:p-6 text-center shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
@@ -193,37 +256,59 @@ export default function HomePage() {
             </div>
             <Link
               href="/produtos"
-              className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#068c22] hover:text-[#057a1e] transition-colors"
             >
               Ver todas <ArrowRight size={16} />
             </Link>
           </div>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-            {categorias.map((cat, i) => (
-              <Link
-                key={cat.slug}
-                href={`/categoria/${cat.slug}`}
-                className="group relative flex flex-col items-center gap-3 overflow-hidden rounded-2xl bg-white p-5 sm:p-6 text-center border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-transparent"
-              >
-                {/* Gradiente de fundo no hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${cat.cor} opacity-0 transition-opacity duration-300 group-hover:opacity-[0.08]`} />
-
-                <span className="relative text-4xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
-                  {cat.icone}
-                </span>
-                <span className="relative text-sm font-semibold text-gray-700 group-hover:text-gray-900">
-                  {cat.nome}
-                </span>
-              </Link>
-            ))}
+            {temCategorias
+              ? categoriasReais.map((cat, i) => (
+                  <Link
+                    key={cat.id}
+                    href={`/categoria/${cat.slug}`}
+                    className="group relative flex flex-col items-center gap-3 overflow-hidden rounded-2xl bg-white p-5 sm:p-6 text-center border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-transparent"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${coresGradiente[i % coresGradiente.length]} opacity-0 transition-opacity duration-300 group-hover:opacity-[0.08]`} />
+                    {cat.imagem_url ? (
+                      <img
+                        src={cat.imagem_url}
+                        alt={cat.nome}
+                        className="relative h-10 w-10 rounded-lg object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    ) : (
+                      <span className="relative text-4xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                        {iconesCategorias[cat.slug] ?? "📦"}
+                      </span>
+                    )}
+                    <span className="relative text-sm font-semibold text-gray-700 group-hover:text-gray-900">
+                      {cat.nome}
+                    </span>
+                  </Link>
+                ))
+              : categoriasPlaceholder.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    href={`/categoria/${cat.slug}`}
+                    className="group relative flex flex-col items-center gap-3 overflow-hidden rounded-2xl bg-white p-5 sm:p-6 text-center border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-transparent"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${cat.cor} opacity-0 transition-opacity duration-300 group-hover:opacity-[0.08]`} />
+                    <span className="relative text-4xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                      {cat.icone}
+                    </span>
+                    <span className="relative text-sm font-semibold text-gray-700 group-hover:text-gray-900">
+                      {cat.nome}
+                    </span>
+                  </Link>
+                ))}
           </div>
 
           {/* Link mobile */}
           <div className="mt-6 text-center sm:hidden">
             <Link
               href="/produtos"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-[#068c22]"
             >
               Ver todas as categorias <ArrowRight size={16} />
             </Link>
@@ -248,45 +333,53 @@ export default function HomePage() {
             </div>
             <Link
               href="/produtos"
-              className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#068c22] hover:text-[#057a1e] transition-colors"
             >
               Ver todos <ArrowRight size={16} />
             </Link>
           </div>
 
-          {/* Placeholder - sera conectado ao Supabase */}
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="group rounded-2xl border border-gray-100 bg-gray-50 p-3 sm:p-4 transition-all hover:shadow-md hover:-translate-y-1"
-              >
-                {/* Imagem placeholder */}
-                <div className="aspect-square w-full rounded-xl bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center overflow-hidden">
-                  <Package size={40} className="text-gray-300" />
-                </div>
-                {/* Info placeholder */}
-                <div className="mt-3 space-y-2">
-                  <div className="h-4 w-3/4 rounded-lg bg-gray-200" />
-                  <div className="h-3 w-1/2 rounded-lg bg-gray-200" />
-                  <div className="flex items-center gap-2 pt-1">
-                    <div className="h-5 w-20 rounded-lg bg-blue-100" />
+          {produtos.length > 0 ? (
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {produtos.map((produto) => (
+                <ProductCard key={produto.id} produto={produto} />
+              ))}
+            </div>
+          ) : (
+            <>
+              {/* Placeholder quando nao ha produtos */}
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="group rounded-2xl border border-gray-100 bg-gray-50 p-3 sm:p-4 transition-all hover:shadow-md hover:-translate-y-1"
+                  >
+                    <div className="aspect-square w-full rounded-xl bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center overflow-hidden">
+                      <Package size={40} className="text-gray-300" />
+                    </div>
+                    <div className="mt-3 space-y-2">
+                      <div className="h-4 w-3/4 rounded-lg bg-gray-200" />
+                      <div className="h-3 w-1/2 rounded-lg bg-gray-200" />
+                      <div className="flex items-center gap-2 pt-1">
+                        <div className="h-5 w-20 rounded-lg bg-[#d4f5dc]" />
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-400">
-              Cadastre produtos pelo painel admin para ve-los aqui
-            </p>
-          </div>
+              <div className="mt-8 text-center">
+                <p className="text-sm text-gray-400">
+                  Cadastre produtos pelo painel admin para ve-los aqui
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
       {/* ===== BANNER CTA ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 noise-bg">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#068c22] to-[#045a16] noise-bg">
         <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
 
@@ -297,13 +390,13 @@ export default function HomePage() {
           >
             Pronto para encontrar o que precisa?
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base text-blue-100">
+          <p className="mx-auto mt-4 max-w-lg text-base text-green-100">
             Navegue por centenas de produtos com os melhores precos e pague facilmente via PIX.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
             <Link
               href="/produtos"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-blue-700 shadow-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-[0.98] min-h-[44px]"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-[#057a1e] shadow-lg transition-all hover:bg-[#edfcf0] hover:shadow-xl active:scale-[0.98] min-h-[44px]"
             >
               Explorar Loja
               <ArrowRight size={18} />

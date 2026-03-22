@@ -12,13 +12,13 @@ const stats = [
     label: 'Pedidos Hoje',
     value: '0',
     icon: ShoppingCart,
-    color: 'bg-blue-500',
+    color: 'bg-[#068c22]',
   },
   {
     label: 'Produtos Ativos',
     value: '0',
     icon: Package,
-    color: 'bg-indigo-500',
+    color: 'bg-[#057a1e]',
   },
   {
     label: 'Estoque Baixo',

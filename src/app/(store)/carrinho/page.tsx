@@ -43,7 +43,7 @@ export default function CarrinhoPage() {
 
           <Link
             href="/produtos"
-            className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 min-h-[44px] w-full sm:w-auto text-sm font-semibold text-white shadow transition hover:bg-blue-700 text-center"
+            className="mt-6 inline-block rounded-full bg-[#068c22] px-6 py-3 min-h-[44px] w-full sm:w-auto text-sm font-semibold text-white shadow transition hover:bg-[#057a1e] text-center"
           >
             Ver Produtos
           </Link>
@@ -96,7 +96,7 @@ export default function CarrinhoPage() {
                   <dt className="text-base font-semibold text-gray-900">
                     Total
                   </dt>
-                  <dd className="text-base font-bold text-blue-600">
+                  <dd className="text-base font-bold text-[#068c22]">
                     R$&nbsp;0,00
                   </dd>
                 </div>
@@ -104,7 +104,7 @@ export default function CarrinhoPage() {
 
               <Link
                 href="/checkout"
-                className="mt-6 block w-full rounded-full bg-blue-600 py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-blue-700"
+                className="mt-6 block w-full rounded-full bg-[#068c22] py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-[#057a1e]"
               >
                 Finalizar Compra
               </Link>

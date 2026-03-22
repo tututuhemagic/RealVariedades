@@ -32,7 +32,7 @@ export default function CheckoutPage() {
                 <div
                   className={`flex w-full flex-col items-center gap-2 rounded-xl p-3 text-center text-sm transition ${
                     ativa
-                      ? "bg-blue-50 text-blue-700 font-semibold"
+                      ? "bg-[#edfcf0] text-[#057a1e] font-semibold"
                       : concluida
                         ? "bg-green-50 text-green-700"
                         : "bg-gray-50 text-gray-400"
@@ -41,7 +41,7 @@ export default function CheckoutPage() {
                   <span
                     className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
                       ativa
-                        ? "bg-blue-600 text-white"
+                        ? "bg-[#068c22] text-white"
                         : concluida
                           ? "bg-green-600 text-white"
                           : "bg-gray-200 text-gray-500"
@@ -72,7 +72,7 @@ export default function CheckoutPage() {
               id="nome"
               type="text"
               placeholder="Seu nome"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default function CheckoutPage() {
               id="email"
               type="email"
               placeholder="seu@email.com"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
               id="cpf"
               type="text"
               placeholder="000.000.000-00"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -105,7 +105,7 @@ export default function CheckoutPage() {
               id="telefone"
               type="tel"
               placeholder="(00) 00000-0000"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function CheckoutPage() {
               id="cep"
               type="text"
               placeholder="00000-000"
-              className="mt-1 w-full max-w-xs rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full max-w-xs rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div className="sm:col-span-2">
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
               id="rua"
               type="text"
               placeholder="Nome da rua"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
               id="numero"
               type="text"
               placeholder="Nº"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -157,7 +157,7 @@ export default function CheckoutPage() {
               id="complemento"
               type="text"
               placeholder="Apto, bloco..."
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -168,7 +168,7 @@ export default function CheckoutPage() {
               id="bairro"
               type="text"
               placeholder="Bairro"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
               id="cidade"
               type="text"
               placeholder="Cidade"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             />
           </div>
           <div>
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
             </label>
             <select
               id="estado"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-[#068c22] focus:ring-1 focus:ring-[#068c22]"
             >
               <option value="">Selecione</option>
               <option value="AC">AC</option>

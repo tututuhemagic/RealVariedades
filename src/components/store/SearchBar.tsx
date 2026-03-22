@@ -40,12 +40,12 @@ export default function SearchBar({
         placeholder={placeholder}
         className="w-full rounded-full border border-gray-300 bg-gray-50 py-2.5 pl-10 pr-4 text-base
                    min-h-[44px] text-gray-700 placeholder-gray-400 outline-none transition-colors
-                   focus:border-blue-500 focus:bg-white focus:ring-1 focus:ring-blue-500"
+                   focus:border-[#068c22] focus:bg-white focus:ring-1 focus:ring-[#068c22]"
       />
       {/* Ícone de busca posicionado dentro do input */}
       <button
         type="submit"
-        className="absolute left-3 min-h-[44px] min-w-[44px] flex items-center justify-center -ml-1.5 text-gray-400 hover:text-blue-500 transition-colors"
+        className="absolute left-3 min-h-[44px] min-w-[44px] flex items-center justify-center -ml-1.5 text-gray-400 hover:text-[#068c22] transition-colors"
         aria-label="Buscar"
       >
         <Search size={18} />

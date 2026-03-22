@@ -46,7 +46,7 @@ export default function CartIcon() {
   return (
     <Link
       href="/carrinho"
-      className="relative min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-blue-600 transition-colors"
+      className="relative min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-[#068c22] transition-colors"
       aria-label={`Carrinho com ${itemCount} itens`}
     >
       <ShoppingBag size={24} />
@@ -55,7 +55,7 @@ export default function CartIcon() {
       {itemCount > 0 && (
         <span
           className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center
-                     rounded-full bg-blue-600 text-[10px] font-bold text-white"
+                     rounded-full bg-[#068c22] text-[10px] font-bold text-white"
         >
           {itemCount > 99 ? '99+' : itemCount}
         </span>

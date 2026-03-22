@@ -38,7 +38,7 @@ export default function Header() {
           {/* Hamburger mobile */}
           <button
             onClick={() => setMenuAberto(!menuAberto)}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all lg:hidden"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-[#068c22] hover:bg-[#edfcf0] active:scale-95 transition-all lg:hidden"
             aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
           >
             {menuAberto ? <X size={22} /> : <Menu size={22} />}
@@ -46,11 +46,11 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0 group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm transition-transform group-hover:scale-105 group-active:scale-95">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#068c22] text-white font-bold text-sm transition-transform group-hover:scale-105 group-active:scale-95">
               RV
             </div>
             <span className="hidden sm:block text-lg font-bold tracking-tight text-gray-900" style={{ fontFamily: 'Sora, sans-serif' }}>
-              Real<span className="text-blue-600">Variedades</span>
+              Real<span className="text-[#068c22]">Variedades</span>
             </span>
           </Link>
 
@@ -63,7 +63,7 @@ export default function Header() {
           <div className="flex items-center gap-1">
             <button
               onClick={() => setBuscaAberta(!buscaAberta)}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all lg:hidden"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-[#068c22] hover:bg-[#edfcf0] active:scale-95 transition-all lg:hidden"
               aria-label="Buscar"
             >
               <Search size={22} />
@@ -71,7 +71,7 @@ export default function Header() {
 
             <Link
               href="/login"
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-[#068c22] hover:bg-[#edfcf0] active:scale-95 transition-all"
               aria-label="Minha conta"
             >
               <User size={22} />
@@ -95,7 +95,7 @@ export default function Header() {
               <li key={cat.href}>
                 <Link
                   href={cat.href}
-                  className="relative block px-4 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:text-blue-600 after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:transition-transform hover:after:scale-x-100"
+                  className="relative block px-4 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:text-[#068c22] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-[#068c22] after:scale-x-0 after:transition-transform hover:after:scale-x-100"
                 >
                   {cat.label}
                 </Link>
@@ -120,7 +120,7 @@ export default function Header() {
                     <Link
                       href={cat.href}
                       onClick={() => setMenuAberto(false)}
-                      className="flex items-center rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-gray-700 transition-all hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]"
+                      className="flex items-center rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-gray-700 transition-all hover:bg-[#edfcf0] hover:text-[#068c22] active:scale-[0.98]"
                       style={{ animationDelay: `${i * 50}ms` }}
                     >
                       {cat.label}
@@ -132,7 +132,7 @@ export default function Header() {
                   <Link
                     href="/login"
                     onClick={() => setMenuAberto(false)}
-                    className="flex items-center gap-3 rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-blue-600 bg-blue-50 transition-all hover:bg-blue-100 active:scale-[0.98]"
+                    className="flex items-center gap-3 rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-[#068c22] bg-[#edfcf0] transition-all hover:bg-[#d4f5dc] active:scale-[0.98]"
                   >
                     <User size={20} />
                     Entrar / Criar conta

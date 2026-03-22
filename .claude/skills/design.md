@@ -57,8 +57,8 @@ Este e um e-commerce de loja de variedades. Stack: Next.js 15, TypeScript, Tailw
 - Botoes `w-full` no mobile, tamanho normal em telas maiores
 
 ### Paleta de Cores - RealVariedades
-- **Primaria:** blue-600 (#2563EB) / blue-700 (#1D4ED8)
-- **Secundaria:** indigo-600 (#4F46E5)
+- **Primaria:** #068c22 (verde) / #057a1e (escuro) / #07a328 (claro)
+- **Secundaria:** #2ab84a (verde claro) / #045a16 (verde escuro)
 - **Sucesso:** emerald-500 (#10B981)
 - **Alerta:** amber-500 (#F59E0B)
 - **Erro:** red-500 (#EF4444)
