@@ -53,11 +53,11 @@ export default async function ProdutoPage({
           </div>
 
           {/* Miniaturas placeholder */}
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex gap-3 overflow-x-auto">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="h-20 w-20 shrink-0 rounded-lg bg-gray-100"
+                className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-gray-100"
               />
             ))}
           </div>
@@ -94,7 +94,7 @@ export default async function ProdutoPage({
                 <button
                   key={v}
                   type="button"
-                  className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-blue-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] min-w-[44px] text-sm font-medium text-gray-700 transition hover:border-blue-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   {v}
                 </button>
@@ -113,7 +113,7 @@ export default async function ProdutoPage({
             <div className="mt-2 flex items-center gap-2">
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50"
+                className="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50"
                 aria-label="Diminuir quantidade"
               >
                 −
@@ -123,11 +123,11 @@ export default async function ProdutoPage({
                 type="number"
                 min={1}
                 defaultValue={1}
-                className="h-10 w-16 rounded-lg border border-gray-300 text-center text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="h-11 w-16 rounded-lg border border-gray-300 text-center text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50"
+                className="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50"
                 aria-label="Aumentar quantidade"
               >
                 +

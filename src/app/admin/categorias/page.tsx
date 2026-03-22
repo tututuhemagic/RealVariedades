@@ -8,7 +8,7 @@ export default function CategoriasPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl font-bold text-gray-800">Categorias</h1>
         <button
-          className="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2.5 min-h-[44px] w-full sm:w-auto rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
         >
           <Plus size={18} />
           Nova Categoria
@@ -56,13 +56,13 @@ function CategoriaCard({
       {/* Ações de editar e excluir */}
       <div className="flex items-center gap-1">
         <button
-          className="p-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+          className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
           aria-label="Editar categoria"
         >
           <Pencil size={16} />
         </button>
         <button
-          className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+          className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors"
           aria-label="Excluir categoria"
         >
           <Trash2 size={16} />

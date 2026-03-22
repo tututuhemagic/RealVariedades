@@ -62,7 +62,7 @@ export default function AdminLayout({
           {/* Botão para fechar sidebar no mobile */}
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden p-1 rounded hover:bg-gray-800 transition-colors"
+            className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-gray-800 transition-colors"
             aria-label="Fechar menu"
           >
             <X size={20} />
@@ -80,7 +80,7 @@ export default function AdminLayout({
                 href={link.href}
                 onClick={() => setSidebarOpen(false)}
                 className={`
-                  flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                  flex items-center gap-3 px-3 py-3 min-h-[44px] rounded-lg text-sm font-medium
                   transition-colors duration-150
                   ${
                     active
@@ -104,7 +104,7 @@ export default function AdminLayout({
           {/* Botão hambúrguer para abrir sidebar no mobile */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden p-2 -ml-2 rounded-md hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 -ml-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors"
             aria-label="Abrir menu"
           >
             <Menu size={24} className="text-gray-700" />

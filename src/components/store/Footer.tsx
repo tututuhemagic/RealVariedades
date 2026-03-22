@@ -1,85 +1,62 @@
-// Rodapé da loja - componente servidor
-
 import Link from 'next/link'
+import { MapPin, Phone, Mail, QrCode } from 'lucide-react'
 
-/** Links institucionais do rodapé */
-const linksInstitucionais = [
-  { label: 'Sobre', href: '/sobre' },
+const linksLoja = [
+  { label: 'Novidades', href: '/produtos?categoria=novidades' },
+  { label: 'Mais Vendidos', href: '/produtos?categoria=mais-vendidos' },
+  { label: 'Ofertas', href: '/produtos?categoria=promocoes' },
+  { label: 'Todas as Categorias', href: '/categorias' },
+]
+
+const linksInstitucional = [
+  { label: 'Sobre nos', href: '/sobre' },
   { label: 'Contato', href: '/contato' },
-  { label: 'Política de Privacidade', href: '/politica-de-privacidade' },
+  { label: 'Politica de Privacidade', href: '/politica-de-privacidade' },
   { label: 'Termos de Uso', href: '/termos-de-uso' },
 ]
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-gray-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Logo e descrição */}
-          <div>
-            <Link href="/" className="text-xl font-bold text-gray-900">
-              RealVariedades
+    <footer className="mt-auto border-t border-gray-200 bg-slate-900 text-slate-300">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Logo e descricao */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm">
+                RV
+              </div>
+              <span className="text-lg font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
+                Real<span className="text-blue-400">Variedades</span>
+              </span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-gray-500">
-              Sua loja online de variedades com os melhores preços e qualidade.
-              Entrega rápida para todo o Brasil.
+            <p className="mt-4 text-sm leading-relaxed text-slate-400 max-w-xs">
+              Sua loja online de variedades com os melhores precos.
+              Entrega para todo o Brasil com rastreio.
             </p>
-          </div>
-
-          {/* Links institucionais */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900">
-              Institucional
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {linksInstitucionais.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-500 transition-colors hover:text-blue-600"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Redes sociais (placeholder) */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900">
-              Redes Sociais
-            </h3>
-            <div className="mt-4 flex gap-4">
-              {/* Instagram */}
+            {/* Redes sociais */}
+            <div className="mt-6 flex gap-3">
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100
-                           text-gray-500 transition-colors hover:bg-blue-100 hover:text-blue-600"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-blue-600 hover:text-white hover:scale-105 active:scale-95"
                 aria-label="Instagram"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
-
-              {/* Facebook */}
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100
-                           text-gray-500 transition-colors hover:bg-blue-100 hover:text-blue-600"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-blue-600 hover:text-white hover:scale-105 active:scale-95"
                 aria-label="Facebook"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
-
-              {/* WhatsApp */}
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100
-                           text-gray-500 transition-colors hover:bg-green-100 hover:text-green-600"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-emerald-600 hover:text-white hover:scale-105 active:scale-95"
                 aria-label="WhatsApp"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -88,13 +65,79 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Links da loja */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
+              Loja
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {linksLoja.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition-colors hover:text-white inline-block py-0.5"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links institucional */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
+              Institucional
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {linksInstitucional.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition-colors hover:text-white inline-block py-0.5"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
+              Contato
+            </h3>
+            <ul className="mt-4 space-y-4">
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="mt-0.5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm text-slate-400">(00) 00000-0000</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail size={16} className="mt-0.5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm text-slate-400">contato@realvariedades.com</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="mt-0.5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm text-slate-400">Sua cidade, Brasil</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Linha de copyright */}
-        <div className="mt-10 border-t border-gray-200 pt-6 text-center">
-          <p className="text-sm text-gray-400">
+        {/* Bottom bar */}
+        <div className="mt-12 flex flex-col gap-4 border-t border-slate-800 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-slate-500">
             &copy; 2026 RealVariedades. Todos os direitos reservados.
           </p>
+          <div className="flex items-center gap-4">
+            <span className="text-xs text-slate-600">Pagamento seguro via</span>
+            <div className="flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-1.5">
+              <QrCode size={14} className="text-emerald-400" />
+              <span className="text-xs font-semibold text-emerald-400">PIX</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

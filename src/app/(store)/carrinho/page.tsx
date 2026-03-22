@@ -18,7 +18,7 @@ export default function CarrinhoPage() {
 
       {carrinhoVazio ? (
         /* ===== Estado vazio ===== */
-        <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-white p-16 text-center">
+        <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-white p-8 sm:p-16 text-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-16 w-16 text-gray-300"
@@ -43,7 +43,7 @@ export default function CarrinhoPage() {
 
           <Link
             href="/produtos"
-            className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow transition hover:bg-blue-700"
+            className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 min-h-[44px] w-full sm:w-auto text-sm font-semibold text-white shadow transition hover:bg-blue-700 text-center"
           >
             Ver Produtos
           </Link>
@@ -52,8 +52,8 @@ export default function CarrinhoPage() {
         /* ===== Carrinho com itens ===== */
         <div className="mt-8 flex flex-col gap-8 lg:flex-row">
           {/* Lista de itens */}
-          <section className="flex-1">
-            <table className="w-full text-left">
+          <section className="flex-1 overflow-x-auto">
+            <table className="w-full text-left min-w-[500px]">
               <thead>
                 <tr className="border-b border-gray-200 text-sm font-medium text-gray-500">
                   <th className="pb-3">Produto</th>

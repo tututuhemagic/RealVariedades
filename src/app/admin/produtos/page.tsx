@@ -10,7 +10,7 @@ export default function ProdutosPage() {
         <h1 className="text-2xl font-bold text-gray-800">Produtos</h1>
         <Link
           href="/admin/produtos/novo"
-          className="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2.5 min-h-[44px] w-full sm:w-auto rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
         >
           <Plus size={18} />
           Novo Produto
@@ -28,17 +28,17 @@ export default function ProdutosPage() {
           <input
             type="text"
             placeholder="Buscar produtos..."
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-10 pr-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
         {/* Filtro por categoria (placeholder) */}
-        <select className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <select className="px-4 py-2.5 min-h-[44px] w-full sm:w-auto border border-gray-300 rounded-lg text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
           <option value="">Todas as categorias</option>
         </select>
 
         {/* Filtro por status */}
-        <select className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <select className="px-4 py-2.5 min-h-[44px] w-full sm:w-auto border border-gray-300 rounded-lg text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
           <option value="">Todos os status</option>
           <option value="ativo">Ativo</option>
           <option value="inativo">Inativo</option>

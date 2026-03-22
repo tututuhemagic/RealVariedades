@@ -73,7 +73,7 @@ export default function NovoProdutoPage() {
               value={nome}
               onChange={(e) => handleNomeChange(e.target.value)}
               placeholder="Ex: Camiseta Básica Algodão"
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export default function NovoProdutoPage() {
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
               placeholder="camiseta-basica-algodao"
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-500 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base text-gray-500 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
 
@@ -104,7 +104,7 @@ export default function NovoProdutoPage() {
               onChange={(e) => setDescricao(e.target.value)}
               placeholder="Descreva o produto..."
               rows={4}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+              className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function NovoProdutoPage() {
                 value={preco}
                 onChange={(e) => setPreco(e.target.value)}
                 placeholder="0,00"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 required
               />
             </div>
@@ -145,7 +145,7 @@ export default function NovoProdutoPage() {
                 value={precoPromocional}
                 onChange={(e) => setPrecoPromocional(e.target.value)}
                 placeholder="0,00"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
           </div>
@@ -167,7 +167,7 @@ export default function NovoProdutoPage() {
                 id="categoria"
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               >
                 <option value="">Selecione uma categoria</option>
                 {/* TODO: Carregar categorias do banco de dados */}
@@ -186,7 +186,7 @@ export default function NovoProdutoPage() {
                 value={estoque}
                 onChange={(e) => setEstoque(e.target.value)}
                 placeholder="0"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2.5 min-h-[44px] border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function NovoProdutoPage() {
           {/* Botão para adicionar variante */}
           <button
             type="button"
-            className="inline-flex items-center gap-2 px-4 py-2.5 border border-dashed border-gray-300 rounded-lg text-sm text-gray-600 hover:border-indigo-400 hover:text-indigo-600 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] border border-dashed border-gray-300 rounded-lg text-sm text-gray-600 hover:border-indigo-400 hover:text-indigo-600 transition-colors"
           >
             <Plus size={18} />
             Adicionar Variante
@@ -254,13 +254,13 @@ export default function NovoProdutoPage() {
         <div className="flex flex-col sm:flex-row gap-3 sm:justify-end">
           <Link
             href="/admin/produtos"
-            className="px-6 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 text-center hover:bg-gray-50 transition-colors"
+            className="px-6 py-2.5 min-h-[44px] w-full sm:w-auto border border-gray-300 rounded-lg text-sm font-medium text-gray-700 text-center hover:bg-gray-50 transition-colors"
           >
             Cancelar
           </Link>
           <button
             type="submit"
-            className="px-6 py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+            className="px-6 py-2.5 min-h-[44px] w-full sm:w-auto bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
           >
             Salvar Produto
           </button>

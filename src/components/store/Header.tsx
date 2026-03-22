@@ -1,94 +1,101 @@
 'use client'
 
-// Cabeçalho da loja - sticky, design limpo com sombra sutil
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Search, User } from 'lucide-react'
+import { Menu, X, Search, User, ShoppingBag } from 'lucide-react'
 import SearchBar from './SearchBar'
 import CartIcon from './CartIcon'
 
-/** Categorias placeholder - substituir por dados dinâmicos futuramente */
 const categorias = [
   { label: 'Novidades', href: '/produtos?categoria=novidades' },
   { label: 'Mais Vendidos', href: '/produtos?categoria=mais-vendidos' },
-  { label: 'Promoções', href: '/produtos?categoria=promocoes' },
+  { label: 'Ofertas', href: '/produtos?categoria=promocoes' },
   { label: 'Categorias', href: '/categorias' },
 ]
 
 export default function Header() {
-  // Controle do menu mobile
   const [menuAberto, setMenuAberto] = useState(false)
-  // Controle da barra de busca mobile
   const [buscaAberta, setBuscaAberta] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Detecta scroll para mudar estilo do header
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'glass border-b border-gray-200/60 shadow-lg shadow-black/[0.03]'
+          : 'bg-white/95 border-b border-transparent'
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Linha principal do header */}
         <div className="flex h-16 items-center justify-between gap-4">
-          {/* Botão hamburger (mobile) */}
+          {/* Hamburger mobile */}
           <button
             onClick={() => setMenuAberto(!menuAberto)}
-            className="p-2 text-gray-700 hover:text-blue-600 transition-colors lg:hidden"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all lg:hidden"
             aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
           >
-            {menuAberto ? <X size={24} /> : <Menu size={24} />}
+            {menuAberto ? <X size={22} /> : <Menu size={22} />}
           </button>
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex-shrink-0 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
-          >
-            RealVariedades
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0 group">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm transition-transform group-hover:scale-105 group-active:scale-95">
+              RV
+            </div>
+            <span className="hidden sm:block text-lg font-bold tracking-tight text-gray-900" style={{ fontFamily: 'Sora, sans-serif' }}>
+              Real<span className="text-blue-600">Variedades</span>
+            </span>
           </Link>
 
-          {/* Barra de busca (desktop) */}
+          {/* Busca desktop */}
           <div className="hidden flex-1 max-w-lg mx-auto lg:block">
             <SearchBar />
           </div>
 
-          {/* Ações do lado direito */}
-          <div className="flex items-center gap-1 sm:gap-2">
-            {/* Botão de busca (mobile) */}
+          {/* Acoes */}
+          <div className="flex items-center gap-1">
             <button
               onClick={() => setBuscaAberta(!buscaAberta)}
-              className="p-2 text-gray-700 hover:text-blue-600 transition-colors lg:hidden"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all lg:hidden"
               aria-label="Buscar"
             >
-              <Search size={24} />
+              <Search size={22} />
             </button>
 
-            {/* Ícone de usuário */}
             <Link
               href="/login"
-              className="p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 active:scale-95 transition-all"
               aria-label="Minha conta"
             >
-              <User size={24} />
+              <User size={22} />
             </Link>
 
-            {/* Ícone do carrinho */}
             <CartIcon />
           </div>
         </div>
 
-        {/* Barra de busca expandida (mobile) */}
+        {/* Busca mobile expandida */}
         {buscaAberta && (
-          <div className="pb-3 lg:hidden">
+          <div className="pb-3 animate-fade-in-up lg:hidden">
             <SearchBar />
           </div>
         )}
 
-        {/* Navegação por categorias (desktop) */}
-        <nav className="hidden lg:block border-t border-gray-100">
-          <ul className="flex items-center gap-8 py-2">
+        {/* Nav desktop */}
+        <nav className="hidden lg:block">
+          <ul className="flex items-center gap-1 -mb-px">
             {categorias.map((cat) => (
               <li key={cat.href}>
                 <Link
                   href={cat.href}
-                  className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                  className="relative block px-4 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:text-blue-600 after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:transition-transform hover:after:scale-x-100"
                 >
                   {cat.label}
                 </Link>
@@ -98,51 +105,43 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Menu mobile (dropdown) */}
+      {/* Menu mobile overlay */}
       {menuAberto && (
-        <div className="border-t border-gray-100 bg-white lg:hidden">
-          <nav className="mx-auto max-w-7xl px-4 py-4">
-            <ul className="flex flex-col gap-1">
-              {categorias.map((cat) => (
-                <li key={cat.href}>
+        <>
+          <div
+            className="fixed inset-0 top-16 bg-black/20 z-40 animate-fade-in lg:hidden"
+            onClick={() => setMenuAberto(false)}
+          />
+          <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-xl z-50 animate-fade-in-up lg:hidden">
+            <nav className="mx-auto max-w-7xl px-4 py-3">
+              <ul className="flex flex-col gap-0.5">
+                {categorias.map((cat, i) => (
+                  <li key={cat.href}>
+                    <Link
+                      href={cat.href}
+                      onClick={() => setMenuAberto(false)}
+                      className="flex items-center rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-gray-700 transition-all hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]"
+                      style={{ animationDelay: `${i * 50}ms` }}
+                    >
+                      {cat.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className="my-2 border-t border-gray-100" />
+                <li>
                   <Link
-                    href={cat.href}
+                    href="/login"
                     onClick={() => setMenuAberto(false)}
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-700
-                               transition-colors hover:bg-gray-50 hover:text-blue-600"
+                    className="flex items-center gap-3 rounded-xl px-4 py-3.5 min-h-[44px] text-base font-medium text-blue-600 bg-blue-50 transition-all hover:bg-blue-100 active:scale-[0.98]"
                   >
-                    {cat.label}
+                    <User size={20} />
+                    Entrar / Criar conta
                   </Link>
                 </li>
-              ))}
-
-              {/* Separador */}
-              <li className="my-2 border-t border-gray-100" />
-
-              {/* Links de conta no menu mobile */}
-              <li>
-                <Link
-                  href="/login"
-                  onClick={() => setMenuAberto(false)}
-                  className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-700
-                             transition-colors hover:bg-gray-50 hover:text-blue-600"
-                >
-                  Entrar / Criar conta
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/minha-conta"
-                  onClick={() => setMenuAberto(false)}
-                  className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-700
-                             transition-colors hover:bg-gray-50 hover:text-blue-600"
-                >
-                  Minha Conta
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+              </ul>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   )

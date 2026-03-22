@@ -52,7 +52,7 @@ export default function PedidosPage() {
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
             className={`
-              px-4 py-2 rounded-lg text-sm font-medium transition-colors
+              px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-medium transition-colors
               ${
                 activeTab === tab.key
                   ? 'bg-indigo-600 text-white'

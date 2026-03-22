@@ -72,7 +72,7 @@ export default function CheckoutPage() {
               id="nome"
               type="text"
               placeholder="Seu nome"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default function CheckoutPage() {
               id="email"
               type="email"
               placeholder="seu@email.com"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
               id="cpf"
               type="text"
               placeholder="000.000.000-00"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -105,7 +105,7 @@ export default function CheckoutPage() {
               id="telefone"
               type="tel"
               placeholder="(00) 00000-0000"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function CheckoutPage() {
               id="cep"
               type="text"
               placeholder="00000-000"
-              className="mt-1 w-full max-w-xs rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full max-w-xs rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div className="sm:col-span-2">
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
               id="rua"
               type="text"
               placeholder="Nome da rua"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
               id="numero"
               type="text"
               placeholder="Nº"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -157,7 +157,7 @@ export default function CheckoutPage() {
               id="complemento"
               type="text"
               placeholder="Apto, bloco..."
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -168,7 +168,7 @@ export default function CheckoutPage() {
               id="bairro"
               type="text"
               placeholder="Bairro"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
               id="cidade"
               type="text"
               placeholder="Cidade"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
             </label>
             <select
               id="estado"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             >
               <option value="">Selecione</option>
               <option value="AC">AC</option>
@@ -255,7 +255,7 @@ export default function CheckoutPage() {
 
           <button
             type="button"
-            className="w-full max-w-xs rounded-full bg-green-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            className="w-full sm:max-w-xs rounded-full bg-green-600 px-8 py-3.5 min-h-[44px] text-base font-semibold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
             Gerar QR Code PIX
           </button>

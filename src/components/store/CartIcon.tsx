@@ -46,7 +46,7 @@ export default function CartIcon() {
   return (
     <Link
       href="/carrinho"
-      className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors"
+      className="relative min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-blue-600 transition-colors"
       aria-label={`Carrinho com ${itemCount} itens`}
     >
       <ShoppingBag size={24} />

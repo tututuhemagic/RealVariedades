@@ -50,13 +50,13 @@ export default function ProdutosPage() {
                 <input
                   type="number"
                   placeholder="Min"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 />
                 <span className="text-gray-400">–</span>
                 <input
                   type="number"
                   placeholder="Max"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 />
               </div>
             </fieldset>
@@ -66,7 +66,7 @@ export default function ProdutosPage() {
               <legend className="text-sm font-medium text-gray-700">
                 Ordenação
               </legend>
-              <select className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+              <select className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2.5 min-h-[44px] text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                 <option value="relevancia">Relevância</option>
                 <option value="menor-preco">Menor preço</option>
                 <option value="maior-preco">Maior preço</option>
@@ -103,7 +103,7 @@ export default function ProdutosPage() {
             </p>
             <Link
               href="/"
-              className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow transition hover:bg-blue-700"
+              className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 min-h-[44px] text-sm font-semibold text-white shadow transition hover:bg-blue-700"
             >
               Voltar ao início
             </Link>
